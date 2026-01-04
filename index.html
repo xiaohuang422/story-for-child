@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个性化儿童故事生成</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <div class="max-w-4xl mx-auto mt-10 p-5 bg-white shadow-md rounded">
+    <h1 class="text-2xl font-bold text-blue-600 mb-4">个性化儿童故事生成器</h1>
+    <form id="storyForm">
+      <div class="space-y-3">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-600">孩子名字</label>
+          <input id="name" name="name" type="text" required class="w-full border rounded px-3 py-2 focus:ring-2">
+        </div>
+        <div>
+          <label for="age" class="block text-sm font-medium text-gray-600">孩子年龄</label>
+          <input id="age" name="age" type="number" required min="3" max="12" class="w-full border rounded px-3 py-2 focus:ring-2">
+        </div>
+        <div>
+          <label for="gender" class="block text-sm font-medium text-gray-600">孩子性别</label>
+          <select id="gender" name="gender" required class="w-full border rounded px-3 py-2 focus:ring-2">
+            <option value="男孩">男孩</option>
+            <option value="女孩">女孩</option>
+          </select>
+        </div>
+        <div>
+          <label for="character" class="block text-sm font-medium text-gray-600">喜欢的主角类型</label>
+          <input id="character" name="character" type="text" required class="w-full border rounded px-3 py-2 focus:ring-2">
+        </div>
+        <div>
+          <label for="theme" class="block text-sm font-medium text-gray-600">喜欢的故事主题</label>
+          <input id="theme" name="theme" type="text" required class="w-full border rounded px-3 py-2 focus:ring-2">
+        </div>
+        <div>
+          <label for="scene" class="block text-sm font-medium text-gray-600">故事发生的场景</label>
+          <input id="scene" name="scene" type="text" required class="w-full border rounded px-3 py-2 focus:ring-2">
+        </div>
+        <div>
+          <label for="value" class="block text-sm font-medium text-gray-600">想要传递的价值观/教育意义（可选）</label>
+          <input id="value" name="value" type="text" class="w-full border rounded px-3 py-2 focus:ring-2">
+        </div>
+      </div>
+      <button type="submit" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
+        生成故事
+      </button>
+    </form>
+    
+    <div id="output" class="mt-6 hidden">
+      <h2 class="text-xl font-semibold">生成的故事</h2>
+      <p id="story" class="mt-2 text-gray-800"></p>
+    </div>
+  </div>
+  
+  <script>
+    document.querySelector('#storyForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(e.target);
+      const output = document.getElementById('output');
+      const storyDiv = document.getElementById('story');
+
+      storyDiv.textContent = "故事生成中，请稍等...";
+      output.classList.remove('hidden');
+      
+      // 模拟API请求
+      setTimeout(() => {
+        storyDiv.textContent = "小明是一位勇敢的小骑士，他在魔法森林中经历了一场冒险......";
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
